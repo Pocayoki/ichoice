@@ -6,6 +6,7 @@ $(document).ready(function() {
   		autoplaySpeed: 2000,
 	});
 
+
 // Get the show releases
 
 $.ajax({
@@ -16,6 +17,21 @@ $.ajax({
   .fail(function(error) {
     console.log("error");
   });
+
+  // Smooth window scroll
+
+  $(document).ready(function(){
+
+    //Window scroll
+    $("nav a").click(function(e) {
+        var id = $(this).attr('href'); //#home
+
+    $('html, body').animate({
+      scrollTop: $(id).offset().top
+        }, 2000);
+
+        e.preventDefault();
+    });
 
   function displayShoes(response){
     var releases = response.releases;
@@ -42,5 +58,7 @@ $.ajax({
     $('.tiles').html(html);
 
   }
+
+  });
 
 });
